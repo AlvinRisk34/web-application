@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Город - Петропавловск</title>
+    <link rel="icon" href="https://i.ibb.co.com/Hn43vRD/12.ico" type="image/x-icon">
+    <!-- Alternative formats for modern browsers -->
+    <link rel="icon" href="https://i.ibb.co.com/Hn43vRD/12.jpg" type="image/jpg">
+    <link rel="icon" href="https://i.ibb.co.com/Hn43vRD/12.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+
+
+</head>
+
+   
+    <video id="video-background" autoplay loop muted playsinline>
+        <source src="62.mp4" type="video/mp4">
+        <source src="path-to-your-video.webm" type="video/webm">
+        Ваш браузер не поддерживает видео.
+    </video>
+    <header>
+
+        <h1>СПИСКИ ГОРОДСКИХ УСЛУГ</h1>
+        <nav>
+            <ul>
+                <li><a href="protected_page.php" class="link">ГЛАВНАЯ</a></li>
+            </ul>
+        </nav>
+
+</div>
+    </header>
+
+    <style>
+        /* Контейнер для категорий, чтобы они были в строку */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 5px;
+            flex-wrap: wrap; /* Для переноса на новую строку на мобильных устройствах */
+        }
+    
+        /* Основные стили для каждой категории */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+    
+        /* Подкатегории скрыты по умолчанию */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 8px 12px;
+            top: 100%;
+            left: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            right: auto;
+            overflow-wrap: break-word;
+        }
+        .dropdown:last-child .dropdown-content {
+    right: 0; /* Меню привязано к правому краю */
+    left: auto; /* Убираем привязку слева */
+}
+    
+        /* Открытие подкатегории при наличии класса active */
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+    
+        /* Стили для ссылок внутри подкатегорий */
+        .dropdown-content a {
+            color: black;
+            padding: 10px 10px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f4f4f4;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+        }
+        .dropdown-content a i,
+        .dropdown-content a img {
+    margin-right: 8px; /* Отступ справа от иконок */
+    vertical-align: middle; /* Выравнивание по центру с текстом */
+    color: #20b2aa;
+}
+    
+        /* Изменение цвета при наведении */
+        .dropdown-content a:hover {
+            background-color: #f1860dac;
+            transform: scale(1.05);
+            border-radius: 8px;
+        }
+    
+        /* Цвета для категорий */
+        .category {
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .category i {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+}
+        .category:hover {
+    transform: scale(1.05); /* Увеличивает кнопку на 5% при наведении */
+    background-color: #c45a31; /* Изменение цвета фона при наведении */
+}
+    
+        .food { background-color: #ff8c00; }
+        .entertainment { background-color: #00bfff; }
+        .sports { background-color: #32cd32; }
+        .culture { background-color: #9932cc; }
+        .education { background-color: #ff6347; }
+        .travel { background-color: #20b2aa; }
+        .health { background-color: #ff1493; }
+    
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .dropdown-content {
+                position: static; /* Убираем абсолютное позиционирование */
+                width: 100%; /* Делаем ширину на всю страницу */
+                box-shadow: none; /* Убираем тень */
+            }
+        }
+        .category i {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+}
+    </style>
+    
+    
+</head>
+<body>
+
+    <div class="menu">
+        <!-- Категория "Еда" -->
+        <div class="dropdown">
+            <div class="category food" onclick="toggleDropdown(this)"><i class="fas fa-utensils"></i> Еда</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/petropanda/" target="_blank"><i class="fas fa-utensils"></i>PANDA</a>
+                <a href="https://www.instagram.com/dodopizza_petropavlovsk1/" target="_blank"><i class="fas fa-utensils"></i>DODO PIZZA</a>
+                <a href="https://www.instagram.com/rimskie_kanikuly_petropavlovsk/" target="_blank"><i class="fas fa-utensils"></i>Римские каникулы</a>
+                <a href="https://www.instagram.com/restoranbeergrad/" target="_blank"><i class="fas fa-utensils"></i>BEERGRAD</a>
+                <a href="https://www.instagram.com/royal_palace_new/" target="_blank"><i class="fas fa-utensils"></i>ROYAL PALACE</a>
+                <a href="https://www.instagram.com/sushi_gogol.petro/" target="_blank"><i class="fas fa-utensils"></i>GOGOL MOGOL</a>
+                <a href="https://www.instagram.com/chicken_hot_petropavlovsk/" target="_blank"><i class="fas fa-utensils"></i>CHICKEN HOT</a>
+                <a href="https://www.instagram.com/sushi_de_pizza_petropavlovsk/" target="_blank"><i class="fas fa-utensils"></i>SUSHI DE PIZZA</a>
+                <a href="https://www.instagram.com/losos__chedder__petro/" target="_blank"><i class="fas fa-utensils"></i>LOSOS AND CHEDDER</a>
+                <a href="https://www.instagram.com/pandalamian_petropavlovsk/" target="_blank"><i class="fas fa-utensils"></i>PANDALAMIAN</a>
+
+            </div>
+        </div>
+    
+        <!-- Категория "Развлечения" -->
+        <div class="dropdown">
+            <div class="category entertainment" onclick="toggleDropdown(this)"><i class="fas fa-clapperboard"></i>Развлечения</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/akvaparkneptun/" target="_blank"><i class="fas fa-clapperboard"></i>АКВАПАРК НЕПТУН</a>
+                <a href="https://www.instagram.com/prime_performance__/" target="_blank"><i class="fas fa-clapperboard"></i>PRIME PERFOMANCE</a>
+                <a href="https://www.instagram.com/tixoe_mesto_sko/" target="_blank"><i class="fas fa-clapperboard"></i>ТИХОЕ МЕСТО</a>
+                <a href="https://www.instagram.com/kinoroom_petro/" target="_blank"><i class="fas fa-clapperboard"></i>KINOROOM</a>
+                <a href="https://www.instagram.com/quest_sko?igsh=enM4bTFmNHVuc3Nt" target="_blank"><i class="fas fa-clapperboard"></i>ДОМ СТРАХА</a>
+                <a href="https://www.instagram.com/rc.madagaskar?igsh=NjFjMnBqaXExb2sz" target="_blank"><i class="fas fa-clapperboard"></i>МАДАГАСКАР</a>
+                <a href="https://www.instagram.com/trc.citymall_petropavlovsk?igsh=MWZqcmlidWxqZnE0bQ==" target="_blank"><i class="fas fa-clapperboard"></i>CITY MALL</a>
+                <a href="https://www.instagram.com/dostyq.mall?igsh=eHpzd2VkNTQ2NzR0" target="_blank"><i class="fas fa-clapperboard"></i>DOSTYQ MALL</a>
+            </div>
+        </div>
+    
+        <!-- Категория "Спорт" -->
+        <div class="dropdown">
+            <div class="category sports" onclick="toggleDropdown(this)"><i class="fas fa-futbol"></i>Спорт</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/icongymkz?igsh=MXJ6aDJsNHJwZmN3eA==" target="_blank"><i class="fas fa-futbol"></i>ICON GYM</a>
+                <a href="https://www.instagram.com/vmgymkz?igsh=bzRiOXQydWljbzVv" target="_blank"><i class="fas fa-futbol"></i>VM GYM</a>
+                <a href="https://www.instagram.com/sporttrend_kz?igsh=N2R2MmZxbHFpcGlp" target="_blank"><i class="fas fa-futbol"></i>SPORTTREND</a>
+                <a href="https://www.instagram.com/sportmaster_kz?igsh=MTZqZXBoMm1pZHQxaQ==" target="_blank"><i class="fas fa-futbol"></i>SPORTMASTER</a>
+                <a href="https://www.instagram.com/upravlenie_sporta_sko?igsh=eHVsYXp1ZW1waTUx" target="_blank"><i class="fas fa-futbol"></i>Управление спорта СКО</a>
+                <a href="https://www.instagram.com/sport.klub.kyzylzhar?igsh=MW94N3FkcDZ2NnplNw==" target="_blank"><i class="fas fa-futbol"></i>спорт. клуб Kyzylzhar </a>
+                <a href="https://www.instagram.com/sport_sku?igsh=ZHQ4OHo4Zm54bjA3" target="_blank"><i class="fas fa-futbol"></i>Sport SKU</a>
+                <a href="https://www.instagram.com/sportstyle_ss_?igsh=dmF0cXRkcGV2d3B6" target="_blank"><i class="fas fa-futbol"></i>Sportstyle</a>
+                <a href="https://www.instagram.com/delfin_petropavl_sko?igsh=MWMzaGFrZ3BwZGtzYw==" target="_blank"><i class="fas fa-futbol"></i>Дельфин</a>
+                <a href="https://www.instagram.com/sportcity_petropavlovsk?igsh=NXhlajhiaTNhcHR4" target="_blank"><i class="fas fa-futbol"></i>SportCity</a>
+                <a href="https://www.instagram.com/sqo.ormbzhsm.genis?igsh=MWl1c2ZvaWh2czYxcQ==" target="_blank"><i class="fas fa-futbol"></i>ZHENIS</a>
+                <a href="https://www.instagram.com/fit7pro_life?igsh=NWE5ejVoYnZ1c28w" target="_blank"><i class="fas fa-futbol"></i>Fit7pro</a>
+            </div>
+        </div>
+    
+        <!-- Категория "Культура" -->
+        <div class="dropdown">
+            <div class="category culture" onclick="toggleDropdown(this)"> <i class="fas fa-theater-masks"></i>Культура</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/muzeinyi?igsh=cXdwZ2I2a2RpMHU2" target="_blank"><i class="fas fa-theater-masks"></i>Резиденция Абылай Хана</a>
+                <a href="https://www.instagram.com/muzeisko?igsh=MXBqcDB2eW5taXhoYw==" target="_blank"><i class="fas fa-theater-masks"></i>Краеведческий Музей</a>
+                <a href="https://www.instagram.com/izomuzei?igsh=bTc2M2xmeWRncXdn" target="_blank"><i class="fas fa-theater-masks"></i>ИЗО музей</a>
+                <a href="https://www.instagram.com/muzei_sku?igsh=MXBrbmEyNmZnbTRjdQ==" target="_blank"><i class="fas fa-theater-masks"></i>Музей СКУ</a>
+                <a href="https://www.instagram.com/sko_filarmoniya?igsh=b2Iwb3I2NHMzcjNo" target="_blank"><i class="fas fa-theater-masks"></i>Филармония</a>
+                <a href="https://www.instagram.com/botanical.garden.sko?igsh=MnNmeWU0Y3R3azFu" target="_blank"><i class="fas fa-theater-masks"></i>Ботанический сад</a>
+                <a href="https://www.instagram.com/mukanov_kitapkhana?igsh=MTd5dDFqbGN2dWFoMQ==" target="_blank"><i class="fas fa-theater-masks"></i>Библиотека С.Муканова</a>
+                <a href="https://www.instagram.com/skodwb?igsh=MWh4c2U1MzFxZW9wdA==" target="_blank"><i class="fas fa-theater-masks"></i>Библиотека С.Мусрепова</a>
+                <a href="https://www.instagram.com/dk_petro?igsh=NGhveWltanI0dTk3" target="_blank"><i class="fas fa-theater-masks"></i>Дом Культуры</a>
+                <a href="https://www.instagram.com/muqanov_teatry?igsh=MWR2Y2JuOGtjbWhvdQ==" target="_blank"><i class="fas fa-theater-masks"></i>Библиотека С.Муканова</a>
+                <a href="https://www.instagram.com/pogodina.kz?igsh=dWp1a3o2Y2ZlbmFt" target="_blank"><i class="fas fa-theater-masks"></i>Театр Погодина</a>
+                <a href="https://www.instagram.com/teatr_kukol_sko_kz?igsh=MXF3M2JhOHd4OXBoYQ==" target="_blank"><i class="fas fa-theater-masks"></i>Театр Кукол</a>
+            </div>
+        </div>
+    
+        <!-- Категория "Образование" -->
+        <div class="dropdown">
+            <div class="category education" onclick="toggleDropdown(this)"><i class="fas fa-graduation-cap"></i>Образование</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/bilim_petropavl?igsh=dHZzeWEzdnZlcnp0" target="_blank"><i class="fas fa-graduation-cap"></i>Отдел образования</a>
+                <a href="https://www.instagram.com/digitalurpaq/" target="_blank"><i class="fas fa-graduation-cap"></i>Дворец Школьников</a>
+                <a href="https://www.instagram.com/kozybayevuniversity/" target="_blank"><i class="fas fa-graduation-cap"></i>Kozybaev University</a>
+                <a href="https://www.instagram.com/collegemzhumabaeva/" target="_blank"><i class="fas fa-graduation-cap"></i>Педагогический колледж</a>
+                <a href="https://www.instagram.com/college_gtk/" target="_blank"><i class="fas fa-graduation-cap"></i>ГТК колледж</a>
+                <a href="https://www.instagram.com/humanitysko?igsh=dmNvMXNlNTJ0bGYy" target="_blank"><i class="fas fa-graduation-cap"></i>Humanity SKO</a>
+               
+            </div>
+        </div>
+    
+        <!-- Категория "Путешествия" -->
+        <div class="dropdown">
+            <div class="category travel" onclick="toggleDropdown(this)"> <i class="fas fa-plane"></i> Путешествия</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/global_tur_petropavlovsk?igsh=MTE1OHllZmRhY3A1Yw==" target="_blank"> <i class="fas fa-plane"></i>Global Tur</a>
+                <a href="https://www.instagram.com/petrotour_touragency?igsh=ZmRlOTZ0ZnR3NzE0" target="_blank"><i class="fas fa-plane"></i>PETROTOUR</a>
+                <a href="https://www.instagram.com/poehali_petro?igsh=MWZmbXF2YTMxY214YQ==" target="_blank"><i class="fas fa-plane"></i>Poehali</a>
+                <a href="https://www.instagram.com/petrotour_touragency?igsh=ZmRlOTZ0ZnR3NzE0" target="_blank"><i class="fas fa-plane"></i>PETROTOUR</a>
+                <a href="https://www.instagram.com/rio_travel?igsh=aXVxNmMxdGpjbzMx" target="_blank"><i class="fas fa-plane"></i>RioTravel</a>
+                <a href="https://www.instagram.com/salemtour.kz?igsh=b3Z6d2Q4MGc5cTdw" target="_blank"><i class="fas fa-plane"></i>SalemTour</a>
+                <a href="https://www.instagram.com/dzen_travel_kz?igsh=eTBxOXp5Y2w2bm8y" target="_blank"><i class="fas fa-plane"></i>DzenTravel</a>
+                <a href="https://www.instagram.com/master.turizma?igsh=MTUwZmxqYXJsOXozbQ==" target="_blank"><i class="fas fa-plane"></i>Мастер Туризма</a>
+            </div>
+        </div>
+    
+        <!-- Категория "Здоровье" -->
+        <div class="dropdown">
+            <div class="category health" onclick="toggleDropdown(this)"><i class="fas fa-heartbeat"></i>Здоровье</div>
+            <div class="dropdown-content">
+                <a href="https://www.instagram.com/centr_mitralia?igsh=MW5oZm43bzBrbTdoNw==" target="_blank"><i class="fas fa-heartbeat"></i>Митралия</a>
+                <a href="https://www.instagram.com/dea_buketova_mira?igsh=MXdib2ZlcGtlbm1qcw==" target="_blank"><i class="fas fa-heartbeat"></i>DEA</a>
+                <a href="https://www.instagram.com/newlife_diagn?igsh=MTczMWthNDI1MWcwaw==" target="_blank"><i class="fas fa-heartbeat"></i>NewLife</a>
+                <a href="https://www.instagram.com/centr.panaceya?igsh=MTV2aHB4enl0MXZyZA==" target="_blank"><i class="fas fa-heartbeat"></i>Панацея</a>
+                <a href="https://www.instagram.com/medicaline_sko?igsh=YjMxOGNiMG9hMXNr" target="_blank"><i class="fas fa-heartbeat"></i>Центр семейной медицины</a>
+                <a href="https://www.instagram.com/newlife_diagn?igsh=MTczMWthNDI1MWcwaw==" target="_blank"><i class="fas fa-heartbeat"></i>NewLife</a>
+                <a href="https://www.instagram.com/efgds_sko?igsh=NHR4MHZqNWw4YXRz" target="_blank"><i class="fas fa-heartbeat"></i>EFGDS</a>
+                <a href="https://www.instagram.com/zdrav.sko?igsh=MjhpMXA5YXlnMmk5" target="_blank"><i class="fas fa-heartbeat"></i>Zdrav</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    function toggleDropdown(element) {
+        // Закрытие всех открытых меню, кроме текущего
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            if (dropdown.contains(element)) {
+                dropdown.classList.toggle('active'); // Открываем или закрываем текущее меню
+            } else {
+                dropdown.classList.remove('active'); // Закрываем другие открытые меню
+            }
+        });
+    }
+</script>
+
+    
+    
+    <style>
+        /* Стили для фона с видео */
+    
+        #video-background {
+        position: fixed; /* Закрепляем видео на фоне */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 115%;
+        object-fit: cover; /* Видео занимает весь экран, сохраняя пропорции */
+        z-index: -1; /* Видео будет позади всех остальных элементов */
+    }
+    
+    </style>    
+    
+    
+    
+    
+    <script>
+       fetch('https://api.openweathermap.org/data/2.5/weather?q=Petropavlovsk&appid=c4b9f233085bc02e9bfb8ef4011b6476&units=metric')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const temperature = data.main.temp;
+        document.getElementById('temperature').innerText = temperature;
+    })
+    .catch(error => {
+        console.error('Ошибка получения погоды:', error);
+        document.getElementById('temperature').innerText = 'Ошибка';
+    });
+
+    </script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #210a85, #033552);
+    color: #333;
+    line-height: 1.6;
+}
+
+#event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.event-card {
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+.event-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+.event-info {
+    padding: 15px;
+}
+
+.event-info h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.event-info p {
+    font-size: 15px;
+    color: #555;
+    margin: 8px 0;
+}
+
+header {
+    background: linear-gradient(135deg, #210a85a8, #3288ba75);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#logo img {
+    height: 80px;
+    width: auto;
+    transition: transform 0.3s;
+}
+
+#logo:hover img {
+    transform: scale(1.1);
+}
+
+nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    margin: 30px 0;
+    padding: 25px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    border-bottom: 2px solid #4ae266;
+    padding-bottom: 10px;
+    color: #4a90e2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+#map-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(74, 144, 226, 0.9);
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+}
+
+.service {
+    padding: 20px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #0b0037, #05001aef);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.service h3 {
+    font-size: 36px;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.service p {
+    color: orange;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    /* Адаптация header и навигации */
+    header {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    nav li {
+        margin-bottom: 10px;
+    }
+
+    /* Адаптация блока "услуги" */
+    .service {
+        padding: 10px;
+        margin: 10px auto;
+        width: 90%; /* Устанавливаем ширину 90% экрана */
+        box-shadow: none; /* Убираем тень */
+        text-align: center; /* Центрируем содержимое */
+    }
+
+    .service h3 {
+        font-size: 24px; /* Уменьшаем размер заголовка */
+        text-align: center;
+        margin-top: 0; /* Убираем верхний отступ */
+    }
+
+    .service p {
+        font-size: 16px; /* Уменьшаем размер текста */
+        text-align: center;
+        color: orange;
+    }
+
+    .service img {
+        width: 100%; /* Изображение заполняет всю ширину контейнера */
+        height: auto; /* Поддерживаем пропорции */
+        border-radius: 5px;
+        margin: 10px 0; /* Отступы сверху и снизу */
+    }
+
+    /* Общие стили для остальных элементов */
+    section {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    /* Адаптация карточек событий */
+    #event-list {
+        padding: 5px;
+        gap: 10px;
+    }
+
+    .event-card {
+        width: 100%; /* Карточка занимает всю ширину экрана */
+    }
+
+    /* Адаптация футера */
+    footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+    </style>
+
+    <script>
+    
+        const directoryList = document.getElementById('directory-list');
+        const toggleButton = document.getElementById('toggleButton');
+        let servicesVisible = true;
+
+        function displayDirectory() {
+            directoryList.innerHTML = '';
+
+            services.forEach(service => {
+                const serviceDiv = document.createElement('div');
+                serviceDiv.classList.add('service');
+                
+                serviceDiv.innerHTML = `
+                    <h3>${service.name}</h3>
+                    <img src="${service.image}" alt="${service.name}">
+                    <p>Телефон: <a href="tel:${service.phone}">${service.phone}</a></p>
+                    <p><a href="${service.location}" target="_blank">Смотреть на карте</a></p>
+                `;
+
+                directoryList.appendChild(serviceDiv);
+            });
+        }
+
+        function toggleDisplay() {
+            servicesVisible = !servicesVisible;
+            directoryList.style.display = servicesVisible ? 'block' : 'none';
+            toggleButton.innerText = servicesVisible ? 'Скрыть услуги' : 'Показать услуги';
+        }
+
+        toggleButton.addEventListener('click', toggleDisplay);
+        displayDirectory();
+    </script>
+
+
+
+
+    </script>
+</body>
+</html>

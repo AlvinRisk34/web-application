@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справочник экстренных служб</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+    <style>
+        body {
+        
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(90deg, #5c1010, #9f0015);
+
+
+        }
+        header {
+            background-color: #48020283;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ffffff;
+        }
+        h2{
+            color: #2b2b2b;
+        }
+        .emergency-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .emergency-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+        .emergency-item:hover {
+            background-color: #f1f1f1;
+        }
+        .emergency-item i {
+            margin-right: 10px;
+            color: #ff4d4d;
+        }
+        .number {
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+    </style>
+
+<body>
+
+<header>
+    <h1>Справочник экстренных служб</h1>
+</header>
+
+<div class="container">
+    <h2>Важные номера экстренной помощи</h2>
+    <ul class="emergency-list">
+        <li class="emergency-item">
+            
+                <i class="fas fa-fire"></i>
+                <span>Пожарная служба</span>
+            </a>
+            <span class="number"><a href="tel:101">101</a></span>
+        </li>
+        <li class="emergency-item">
+           
+                <i class="fas fa-shield-alt"></i>
+                <span>Полиция</span>
+            </a>
+            <span class="number"><a href="tel:102">102</a></span>
+        </li>
+        <li class="emergency-item">
+       
+                <i class="fas fa-ambulance"></i>
+                <span>Скорая медицинская помощь</span>
+            </a>
+            <span class="number"><a href="tel:103">103</a></span>
+        </li>
+        <li class="emergency-item">
+           
+                <i class="fas fa-gas-pump"></i>
+                <span>Аварийная служба газа</span>
+            </a>
+            <span class="number"><a href="tel:104">104</a></span>
+        </li>
+        <li class="emergency-item">
+       
+                <i class="fas fa-phone"></i>
+                <span>Объединенный номер экстренных служб</span>
+            </a>
+            <span class="number"><a href="tel:112">112</a></span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
